@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 20:52:40 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/25 17:56:41 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/27 10:37:57 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		init_flags(t_flag *flags)
 	flags->minus = 0;
 	flags->zero = 0;
 	flags->precision = -1;
-	flags->min_width = 0;
+	flags->min_w = 0;
 }
 
 static void		parse_flags(t_carriage **ptr_car, t_flag *flags)
@@ -49,10 +49,10 @@ static void		parse_min_width(t_carriage **ptr_car, va_list **ap, t_flag *flags)
 			flags->minus = 1;
 		if (!temp)
 			flags->zero = 1;
-		flags->min_width = (temp > 0) ? temp : -temp;
+		flags->min_w = (temp > 0) ? temp : -temp;
 		return ;
 	}
-	flags->min_width = ft_atoi(*(car->format_current));
+	flags->min_w = ft_atoi(car->format_current);
 	while (ft_isdigit(*(car->format_current)))
 		(car->format_current)++;
 }
@@ -69,7 +69,7 @@ static void		parse_precision(t_carriage **ptr_car, va_list **ap, t_flag *flags)
 		flags->precision = va_arg(**ap, int);
 		return ;
 	}
-	flags->precision = ft_atoi(*(car->format_current));
+	flags->precision = ft_atoi(car->format_current);
 	while (ft_isdigit(*(car->format_current)))
 		(car->format_current)++;
 }

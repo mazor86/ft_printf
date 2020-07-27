@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 18:44:12 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/25 23:44:24 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/27 11:22:31 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 
 typedef struct	s_carriage
 {
-	char		*str_start;
-	char		*format_current;
+	const char	*str_start;
+	const char	*format_current;
 	int			spec_len;
 	int			tot_print;
-	int			va_on;
 }				t_carriage;
 
 typedef struct	s_flag
@@ -37,9 +36,10 @@ typedef struct	s_flag
 	int			space;
 	int			hash;
 	int			plus;
-	int			min_width;
+	int			min_w;
 	int			precision;
 	char		conversion;
+	int			def_len;
 }				t_flag;
 
 int		ft_printf(const char *, ...);
@@ -52,5 +52,11 @@ size_t	ft_strlen(const char *s);
 void	ft_itoa_base(int number, char *str, char *base);
 void	ft_utoa_base(unsigned int number, char *result, char *base);
 void	ft_ulltoa_base(unsigned long long number, char *result, char *base);
+int		conversion_percent(t_flag *flags);
+int		conversion_char(unsigned char c, t_flag *fl);
+int		conversion_integer(int num, t_flag *fl);
+int		conversion_unsigned(unsigned int num, t_flag *fl, char spec);
+int		conversion_string(char *str, t_flag *fl);
+int		conversion_pointer(size_t adress, t_flag *fl);
 
 #endif
