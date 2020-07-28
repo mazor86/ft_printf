@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 19:12:28 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/25 23:43:52 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/28 23:58:56 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		reverse(char *str)
 
 	i = 0;
 	len = ft_strlen(str);
-	while (i < len/2)
+	while (i < len / 2)
 	{
 		temp = str[i];
 		str[i] = str[len - i - 1];
@@ -47,7 +47,7 @@ void			ft_itoa_base(int nb, char *result, char *base)
 		number /= base_len;
 	}
 	if (sign < 0)
-		result[i++] = '-'; 
+		result[i++] = '-';
 	result[i] = '\0';
 	reverse(result);
 }
@@ -70,7 +70,8 @@ void			ft_utoa_base(unsigned int number, char *result, char *base)
 	reverse(result);
 }
 
-void			ft_ulltoa_base(unsigned long long number, char *result, char *base)
+void			ft_ulltoa_base(unsigned long long number,\
+								char *result, char *base)
 {
 	unsigned	base_len;
 	int			i;
@@ -84,6 +85,8 @@ void			ft_ulltoa_base(unsigned long long number, char *result, char *base)
 	}
 	if (!i)
 		result[i++] = '0';
+	result[i++] = 'x';
+	result[i++] = '0';
 	result[i] = '\0';
 	reverse(result);
 }

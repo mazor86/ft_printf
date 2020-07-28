@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 20:52:40 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/27 10:37:57 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 00:07:40 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		init_flags(t_flag *flags)
 {
 	flags->minus = 0;
 	flags->zero = 0;
-	flags->precision = -1;
+	flags->prec = -1;
 	flags->min_w = 0;
 }
 
@@ -35,9 +35,10 @@ static void		parse_flags(t_carriage **ptr_car, t_flag *flags)
 	}
 }
 
-static void		parse_min_width(t_carriage **ptr_car, va_list **ap, t_flag *flags)
+static void		parse_min_width(t_carriage **ptr_car, va_list **ap,\
+								t_flag *flags)
 {
-	t_carriage *car;
+	t_carriage	*car;
 	int			temp;
 
 	car = *ptr_car;
@@ -57,7 +58,8 @@ static void		parse_min_width(t_carriage **ptr_car, va_list **ap, t_flag *flags)
 		(car->format_current)++;
 }
 
-static void		parse_precision(t_carriage **ptr_car, va_list **ap, t_flag *flags)
+static void		parse_precision(t_carriage **ptr_car, va_list **ap,\
+								t_flag *flags)
 {
 	t_carriage *car;
 
@@ -66,17 +68,21 @@ static void		parse_precision(t_carriage **ptr_car, va_list **ap, t_flag *flags)
 	if (*(car->format_current) == '*')
 	{
 		(car->format_current)++;
-		flags->precision = va_arg(**ap, int);
+		flags->prec = va_arg(**ap, int);
 		return ;
 	}
-	flags->precision = ft_atoi(car->format_current);
+	flags->prec = ft_atoi(car->format_current);
 	while (ft_isdigit(*(car->format_current)))
 		(car->format_current)++;
+	if (flags->min_w < 0)
+		flags->minus = 1;
+	if (flags->minus || flags->prec >= 0)
+		flags->zero = 0;
 }
 
 int				parse(t_carriage *car, va_list *ap)
 {
-	t_flag	flags;
+	t_flag		flags;
 
 	(car->format_current)++;
 	init_flags(&flags);
@@ -87,14 +93,16 @@ int				parse(t_carriage *car, va_list *ap)
 	if (ft_strchr("di", *(car->format_current)))
 		return (conversion_integer(va_arg(*ap, int), &flags));
 	if (ft_strchr("uxX", *(car->format_current)))
+	{
 		return (conversion_unsigned(va_arg(*ap, unsigned int), &flags,\
-										   *(car->format_current)));
+			*(car->format_current)));
+	}
 	if (*(car->format_current) == 's')
 		return (conversion_string(va_arg(*ap, char *), &flags));
 	if (*(car->format_current) == 'c')
 		return (conversion_char((unsigned char)va_arg(*ap, int), &flags));
 	if (*(car->format_current) == 'p')
-		return (conversion_pointer(va_arg(*ap,size_t), &flags));
+		return (conversion_pointer(va_arg(*ap, unsigned long long), &flags));
 	if (*(car->format_current) == '%')
 		return (conversion_percent(&flags));
 	else
