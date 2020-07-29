@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 20:42:16 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 09:35:35 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 16:05:28 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int			conversion_integer(int num, t_flag *fl)
 
 	if (fl->min_w > MAX_SINGLE_CONV || fl->prec > MAX_SINGLE_CONV)
 		return (-1);
+	if (!num && !fl->prec)
+		return (print_spaces(fl->min_w));
 	ft_itoa_base(num, result, DECIMAL_BASE);
 	fl->def_len = ft_strlen(result);
 	sign = num < 0 ? '-' : 0;
