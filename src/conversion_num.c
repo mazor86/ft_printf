@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 20:42:16 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 16:05:28 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 19:32:37 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int			conversion_integer(int num, t_flag *fl)
 	return (write(1, buf, tot_print));
 }
 
-int			conversion_pointer(unsigned long long adress, t_flag *fl)
+int			conversion_pointer(size_t adress, t_flag *fl)
 {
 	char	buf[MAX_SINGLE_CONV];
 	char	result[DIGIT_CAPACITY + 1];
