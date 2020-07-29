@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 19:12:28 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/28 23:58:56 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 15:38:19 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void			ft_itoa_base(int nb, char *result, char *base)
 	}
 	if (sign < 0)
 		result[i++] = '-';
+	if (!i)
+		result[i++] = '0';
 	result[i] = '\0';
 	reverse(result);
 }
