@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 20:52:40 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 16:42:20 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 17:37:22 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,5 @@ int				parse(t_carriage *car, va_list *ap)
 		return (conversion_pointer(va_arg(*ap, unsigned long long), &flags));
 	if (*(car->format_current) == '%')
 		return (conversion_percent(&flags));
-	else
-		return (-1);
+	return (-1);
 }

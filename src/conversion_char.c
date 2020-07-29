@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 23:48:38 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 17:15:53 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 17:43:17 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,14 @@ int		conversion_string(char *str, t_flag *fl)
 	int		i;
 	char	buf[MAX_SINGLE_CONV];
 
-	if (!str)
-		str = "(null)";
+	str = !str ? "(null)" : str;
 	i = 0;
 	fl->def_len = ft_strlen(str);
 	if (fl->def_len > MAX_SINGLE_CONV || fl->min_w > MAX_SINGLE_CONV)
 		return (-1);
 	fl->prec = fl->prec < 0 ? fl->def_len : fl->prec;
 	fl->prec = fl->def_len < fl->prec ? fl->def_len : fl->prec;
-	fl->def_len = fl->def_len > fl->prec ? fl->prec : fl-> def_len;
+	fl->def_len = fl->def_len > fl->prec ? fl->prec : fl->def_len;
 	if (fl->minus)
 	{
 		ft_strlcpy(buf + i, str, fl->def_len + 1);
