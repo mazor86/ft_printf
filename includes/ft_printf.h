@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 18:44:12 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 16:43:33 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 17:12:28 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stddef.h>
-# define MAX_SINGLE_CONV 4096
+# define MAX_SINGLE_CONV 65536
 # define DIGIT_CAPACITY 64
 # define DECIMAL_BASE "0123456789"
 # define HEX_LOWER_BASE "0123456789abcdef"
