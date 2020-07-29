@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 18:44:12 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 09:31:45 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 16:43:33 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_flag
 	int			minus;
 	int			min_w;
 	int			prec;
-	char		conversion;
 	int			def_len;
 }				t_flag;
 
@@ -59,5 +58,6 @@ int				conversion_pointer(unsigned long long adress, t_flag *fl);
 char			*init_base(char spec);
 int				print_spaces(int min_w);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
+void			flag_analysis(t_flag *flags);
 
 #endif

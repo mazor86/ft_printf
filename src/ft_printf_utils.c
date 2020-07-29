@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 17:35:31 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/28 23:59:40 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 16:41:49 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ int		print_spaces(int min_w)
 		i++;
 	}
 	return (i);
+}
+
+void	flag_analysis(t_flag *flags)
+{
+	if (flags->min_w < 0)
+		flags->minus = 1;
+	if (flags->minus || flags->prec >= 0)
+		flags->zero = 0;
 }

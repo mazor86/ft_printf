@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 20:52:40 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 00:07:40 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 16:42:20 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,6 @@ static void		parse_precision(t_carriage **ptr_car, va_list **ap,\
 	flags->prec = ft_atoi(car->format_current);
 	while (ft_isdigit(*(car->format_current)))
 		(car->format_current)++;
-	if (flags->min_w < 0)
-		flags->minus = 1;
-	if (flags->minus || flags->prec >= 0)
-		flags->zero = 0;
 }
 
 int				parse(t_carriage *car, va_list *ap)
@@ -90,6 +86,7 @@ int				parse(t_carriage *car, va_list *ap)
 	parse_min_width(&car, &ap, &flags);
 	if (*(car->format_current) == '.')
 		parse_precision(&car, &ap, &flags);
+	flag_analysis(&flags);
 	if (ft_strchr("di", *(car->format_current)))
 		return (conversion_integer(va_arg(*ap, int), &flags));
 	if (ft_strchr("uxX", *(car->format_current)))
