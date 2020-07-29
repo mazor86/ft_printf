@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/26 23:48:38 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/28 23:55:05 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 10:15:12 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,26 @@ int		conversion_char(unsigned char c, t_flag *fl)
 
 int		conversion_string(char *str, t_flag *fl)
 {
-	return (write(1, str, ft_strlen(str)));
+	int		i;
+	char	buf[MAX_SINGLE_CONV];
+
+	if (!str)
+		str = "(null)";
+	i = 0;
+	fl->def_len = ft_strlen(str);
+	fl->def_len = fl->def_len < fl->prec ? fl->def_len : fl->prec;
+	if (fl->minus)
+	{
+		ft_strlcpy(buf + i, str, fl->def_len + 1);
+		i += fl->def_len;
+		fl->def_len = 0;
+	}
+	while (i < fl->min_w - fl->def_len)
+		buf[i++] = ' ';
+	if (!fl->minus)
+	{
+		ft_strlcpy(buf + i, str, fl->def_len + 1);
+		i += fl->def_len;
+	}
+	return (write(1, buf, i));
 }

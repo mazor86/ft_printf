@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 18:44:12 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/28 23:57:28 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/29 09:31:45 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ typedef struct	s_flag
 {
 	int			zero;
 	int			minus;
-	int			space;
-	int			hash;
-	int			plus;
 	int			min_w;
 	int			prec;
 	char		conversion;
@@ -48,7 +45,6 @@ int				parse(t_carriage *car, va_list *ap);
 char			*ft_strchr(const char *s, int c);
 int				ft_atoi(const char *nptr);
 int				ft_isdigit(int c);
-int				ft_isspace(int c);
 size_t			ft_strlen(const char *s);
 void			ft_itoa_base(int number, char *str, char *base);
 void			ft_utoa_base(unsigned int number, char *result, char *base);
