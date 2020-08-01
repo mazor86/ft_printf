@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 19:12:28 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 21:02:41 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/30 11:55:58 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void			ft_utoa_base(unsigned int number, char *result, char *base)
 	reverse(result);
 }
 
-void			ft_ulltoa_base(size_t number, char *result, char *base)
+void			ft_sttoa_base(size_t number, char *result, char *base)
 {
 	unsigned	base_len;
 	int			i;

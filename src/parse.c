@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 20:52:40 by mazor             #+#    #+#             */
-/*   Updated: 2020/07/29 19:31:45 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/30 11:23:44 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ static void		init_flags(t_flag *flags)
 	flags->zero = 0;
 	flags->prec = -1;
 	flags->min_w = 0;
+	flags->plus = 0;
+	flags->hash = 0;
+	flags->space = 0;
 }
 
 static void		parse_flags(t_carriage **ptr_car, t_flag *flags)
@@ -31,6 +34,12 @@ static void		parse_flags(t_carriage **ptr_car, t_flag *flags)
 			flags->minus = 1;
 		if (*(car->format_current) == '0')
 			flags->zero = 1;
+		if (*(car->format_current) == '+')
+			flags->plus = 1;
+		if (*(car->format_current) == ' ')
+			flags->space = 1;
+		if (*(car->format_current) == '#')
+			flags->hash = 1;
 		(car->format_current)++;
 	}
 }
